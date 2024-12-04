@@ -1,0 +1,110 @@
+body {
+    background-image: url('image.jpeg'); /* Chemin correct vers l'image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: black;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+    
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.carousel-container {
+    text-align: center;
+    padding: 40px 0;
+    color: white;
+    position: relative; /* Ajouté pour positionner les boutons correctement */
+}
+
+.carousel-container h1 {
+    margin-bottom: 50px; /* Ajoute un espace en bas du titre */
+    margin-top: 0px;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: calc(250px * 6 + 60px); /* Ajusté pour le nombre de films et des marges */
+}
+
+.movie {
+    min-width: 250px; /* Ajustez en fonction de la taille que vous souhaitez */
+    margin: 0 5px; /* Ajuste la marge entre les films */
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Pour éviter que le contenu déborde */
+    margin: 10px;
+    
+}
+
+.movie img {
+    width: 100%; /* L'image prend 100% de la largeur de son conteneur */
+    height: 400px; /* Définit une hauteur fixe pour toutes les images */
+    object-fit: cover; /* Pour s'assurer que l'image couvre tout le conteneur sans déformation */
+    display: block; /* Évite les espaces en bas des images */
+}
+
+
+.movie:hover {
+    transform: scale(1.1);
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    padding: 15px; /* Augmente le padding pour rendre le bouton plus grand */
+    color: white;
+    z-index: 1; /* Assurez-vous que le bouton est au-dessus des films */
+}
+.nav-container{
+    margin-bottom:0px;
+    padding: 5px;
+}
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.movie-details {
+    margin-top: px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    margin: 5px 0;
+    padding: 10px;
+}

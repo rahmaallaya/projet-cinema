@@ -1,0 +1,363 @@
+
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation de Billets de Cinéma</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+       
+        .movie-details {
+    
+        padding: 20px;
+        border-radius: 10px;
+        margin-right: 20px;
+        width: 30%;               /* L'élément prend 30% de la largeur de la page */
+         height: 100%;
+    }
+        
+        .seating-grid {
+            display: grid;
+            grid-template-columns: repeat(15, 9fr); /* 10 colonnes */
+            gap: 5px;
+            margin-top: 20px;
+        }
+        .seat {
+            width: 30px;
+            height: 30px;
+            background-color: #444;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .available {
+            background-color: #444;
+        }
+        .booked {
+            background-color: #d9534f;
+            cursor: not-allowed;
+        }
+        .selected {
+            background-color: #5cb85c;
+        }
+        form {
+            margin-top: 20px;
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .reserved-seats {
+            background-color: #2c2c2c;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+            color: #f1f1f1;
+        }
+        .reservation-info {
+            margin-bottom: 20px;
+            
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px; /* Espace au-dessus de la grille */
+        }
+        /* Styles globaux pour la page */
+
+/* Section de détails du film */
+#movie-details {
+  width: 30%;  /* 30% de la largeur */
+  
+  color: white;
+  padding: 20px;
+  height: 100vh;  /* Prend toute la hauteur de la page */
+  box-sizing: border-box;
+  position: absolute;  /* Fixe cette section à droite */
+  top: 0;
+  left: 0;  /* Positionne la section à droite de la page */
+  z-index: 10;  /* Pour s'assurer que cette section est au-dessus des autres éléments */
+  overflow: auto;  /* Pour permettre le défilement si le contenu dépasse */
+}
+h1.seating-section {
+    padding: 100px;
+    height: 100vh;
+        }
+.reservation-container{
+    width: 60%;
+    margin-left: 30%;
+}
+    </style>
+</head>
+<body>
+    <h1>Réservation de Billets</h1>
+    <div class="reservation-container">
+        <h1>Réservation du film</h1>
+        <div id="movie-details">
+           
+            <!-- Les détails du film seront injectés ici par JavaScript -->
+        </div>
+    
+        <div class="seating-section">
+            <div class="reservation-info">
+                <div>
+                    <label for="reservation-date">Date :</label>
+                    <input type="date" id="reservation-date" min="" required>
+                </div>
+                <div>
+                    <label for="reservation-time">Heure :</label>
+                    <select id="reservation-time" required>
+                        <option value="">-- Sélectionnez une heure --</option>
+                        <option value="13:00">13:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="23:30">23:30</option>
+                    </select>
+                </div>
+
+                
+            </div>
+            <div class="seating-grid" id="seating-grid">
+                <!-- Grille des sièges (70 sièges au total) -->
+                <div class="seat available" data-seat="1"></div>
+                <div class="seat available" data-seat="2"></div>
+                <div class="seat available" data-seat="3"></div>
+                <div class="seat available" data-seat="4"></div>
+                <div class="seat available" data-seat="5"></div>
+                <div class="seat available" data-seat="6"></div>
+                <div class="seat available" data-seat="7"></div>
+                <div class="seat available" data-seat="8"></div>
+                <div class="seat available" data-seat="9"></div>
+                <div class="seat available" data-seat="10"></div>
+                <div class="seat available" data-seat="11"></div>
+                <div class="seat available" data-seat="12"></div>
+                <div class="seat available" data-seat="13"></div>
+                <div class="seat available" data-seat="14"></div>
+                <div class="seat available" data-seat="15"></div>
+                <div class="seat available" data-seat="16"></div>
+                <div class="seat available" data-seat="17"></div>
+                <div class="seat available" data-seat="18"></div>
+                <div class="seat available" data-seat="19"></div>
+                <div class="seat available" data-seat="20"></div>
+                <div class="seat available" data-seat="21"></div>
+                <div class="seat available" data-seat="22"></div>
+                <div class="seat available" data-seat="23"></div>
+                <div class="seat available" data-seat="24"></div>
+                <div class="seat available" data-seat="25"></div>
+                <div class="seat available" data-seat="26"></div>
+                <div class="seat available" data-seat="27"></div>
+                <div class="seat available" data-seat="28"></div>
+                <div class="seat available" data-seat="29"></div>
+                <div class="seat available" data-seat="30"></div>
+                <div class="seat available" data-seat="31"></div>
+                <div class="seat available" data-seat="32"></div>
+                <div class="seat available" data-seat="33"></div>
+                <div class="seat available" data-seat="34"></div>
+                <div class="seat available" data-seat="35"></div>
+                <div class="seat available" data-seat="36"></div>
+                <div class="seat available" data-seat="37"></div>
+                <div class="seat available" data-seat="38"></div>
+                <div class="seat available" data-seat="39"></div>
+                <div class="seat available" data-seat="40"></div>
+                <div class="seat available" data-seat="41"></div>
+                <div class="seat available" data-seat="42"></div>
+                <div class="seat available" data-seat="43"></div>
+                <div class="seat available" data-seat="44"></div>
+                <div class="seat available" data-seat="45"></div>
+                <div class="seat available" data-seat="46"></div>
+                <div class="seat available" data-seat="47"></div>
+                <div class="seat available" data-seat="48"></div>
+                <div class="seat available" data-seat="49"></div>
+                <div class="seat available" data-seat="50"></div>
+                <div class="seat available" data-seat="51"></div>
+                <div class="seat available" data-seat="52"></div>
+                <div class="seat available" data-seat="53"></div>
+                <div class="seat available" data-seat="54"></div>
+                <div class="seat available" data-seat="55"></div>
+                <div class="seat available" data-seat="56"></div>
+                <div class="seat available" data-seat="57"></div>
+                <div class="seat available" data-seat="58"></div>
+                <div class="seat available" data-seat="59"></div>
+                <div class="seat available" data-seat="60"></div>
+                <div class="seat available" data-seat="61"></div>
+                <div class="seat available" data-seat="62"></div>
+                <div class="seat available" data-seat="63"></div>
+                <div class="seat available" data-seat="64"></div>
+                <div class="seat available" data-seat="65"></div>
+                <div class="seat available" data-seat="66"></div>
+                <div class="seat available" data-seat="67"></div>
+                <div class="seat available" data-seat="68"></div>
+                <div class="seat available" data-seat="69"></div>
+                <div class="seat available" data-seat="70"></div>
+                <div class="seat available" data-seat="71"></div>
+                <div class="seat available" data-seat="72"></div>
+                <div class="seat available" data-seat="73"></div>
+                <div class="seat available" data-seat="74"></div>
+                <div class="seat available" data-seat="75"></div>
+                <div class="seat available" data-seat="76"></div>
+                <div class="seat available" data-seat="77"></div>
+                <div class="seat available" data-seat="78"></div>
+                <div class="seat available" data-seat="79"></div>
+                <div class="seat available" data-seat="80"></div>
+                <div class="seat available" data-seat="81"></div>
+                <div class="seat available" data-seat="82"></div>
+                <div class="seat available" data-seat="83"></div>
+                <div class="seat available" data-seat="84"></div>
+                <div class="seat available" data-seat="85"></div>
+                <div class="seat available" data-seat="86"></div>
+                <div class="seat available" data-seat="87"></div>
+                <div class="seat available" data-seat="88"></div>
+                <div class="seat available" data-seat="89"></div>
+                <div class="seat available" data-seat="90"></div>
+
+
+            </div>
+            <form id="reservation-form">
+                <input type="text" placeholder="Nom" required>
+                <input type="text" placeholder="Prénom" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Numéro de téléphone" required>
+                <input type="text" placeholder="Numéro de carte de paiement" required>
+                <input type="text" placeholder="Code de carte" required>
+                <button type="submit">Réserver</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener("DOMContentLoaded", () => {
+    // Liste des films
+    const films = [
+        { id: 1, title: "The Greatest Showman", image: "image1.jpg", details: "Le film The Greatest Showman raconte l'histoire de P.T. Barnum." },
+        { id: 2, title: "White House Down", image: "image2.jpeg", details: "White House Down est un film d'action." },
+        { id: 3, title: "The Wolf of Wall Street", image: "image3.jpeg", details: "The Wolf of Wall Street est un film biographique." },
+        { id: 4, title: "Les Dents de la Mer", image: "image4.jpeg", details: "Les Dents de la Mer est un film d'horreur classique." },
+        { id: 5, title: "Inception", image: "image5.jpeg", details: "Inception est un film de science-fiction." },
+        { id: 6, title: "Nerve", image: "image6.jpeg", details: "Nerve est un thriller interactif sur un jeu en ligne." },
+        { id: 7, title: "Titanic", image: "image7.jpeg", details: "Titanic raconte l'histoire d'amour entre Jack et Rose." },
+        { id: 8, title: "Fall", image: "image8.jpeg", details: "Fall est un thriller sur deux alpinistes piégés au sommet d'une tour." },
+        { id: 9, title: "Happy New Year", image: "image9.jpeg", details: "Happy New Year est un film indien sur un groupe de voleurs qui organisent un vol pendant une compétition de danse." }
+    ];
+
+    // Récupération du film sélectionné via l'ID
+    const params = new URLSearchParams(window.location.search);
+    const filmId = parseInt(params.get("filmId"));
+    const selectedFilm = films.find(f => f.id === filmId);
+
+    // Affichage des détails du film
+    const movieDetailsContainer = document.getElementById("movie-details");
+    if (selectedFilm) {
+        movieDetailsContainer.innerHTML = `
+            <h2>${selectedFilm.title}</h2>
+            <img src="${selectedFilm.image}" alt="${selectedFilm.title}" style="max-width: 100%;">
+            <p>${selectedFilm.details}</p>
+        `;
+    } else {
+        movieDetailsContainer.innerHTML = "<p>Film non trouvé.</p>";
+    }
+
+    // Gestion de la date minimale
+    const dateInput = document.getElementById('reservation-date');
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0]; // Format yyyy-mm-dd
+    dateInput.min = formattedDate;
+
+    // Gestion de la grille de sièges
+    const seatingGrid = document.getElementById("seating-grid");
+
+    // Fonction pour charger les sièges réservés
+    function loadReservedSeats() {
+        const reservedSeats = JSON.parse(localStorage.getItem("reservedSeats")) || [];
+        document.querySelectorAll(".seat").forEach(seat => {
+            if (reservedSeats.includes(seat.dataset.seat)) {
+                seat.classList.add("booked");
+            }
+        });
+    }
+
+    // Charger les sièges réservés au chargement de la page
+    loadReservedSeats();
+
+    // Sélectionner/Désélectionner un siège
+    seatingGrid.addEventListener("click", (event) => {
+        const seat = event.target;
+        if (seat.classList.contains("available") && !seat.classList.contains("booked")) {
+            seat.classList.toggle("selected");
+        }
+    });
+
+    // Gestion du formulaire de réservation
+    const reservationForm = document.getElementById("reservation-form");
+    reservationForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Récupérer les sièges sélectionnés
+        const selectedSeats = Array.from(document.querySelectorAll(".seat.selected"))
+            .map(seat => seat.dataset.seat);
+
+        if (selectedSeats.length === 0) {
+            alert("Veuillez sélectionner au moins un siège.");
+            return;
+        }
+
+        // Récupérer les informations du formulaire
+        const formData = new FormData(reservationForm);
+        const name = formData.get("name");
+        const email = formData.get("email");
+
+        // Afficher un message de confirmation
+        alert(`Réservation confirmée pour ${name} (${email}) pour les sièges : ${selectedSeats.join(", ")}.`);
+
+        // Sauvegarder les sièges réservés dans le localStorage
+        const reservedSeats = JSON.parse(localStorage.getItem("reservedSeats")) || [];
+        selectedSeats.forEach(seat => {
+            reservedSeats.push(seat);
+        });
+        localStorage.setItem("reservedSeats", JSON.stringify(reservedSeats));
+
+        // Marquer les sièges réservés comme "booked"
+        selectedSeats.forEach(seat => {
+            const seatElement = document.querySelector(`.seat[data-seat="${seat}"]`);
+            if (seatElement) {
+                seatElement.classList.add("booked");
+                seatElement.classList.remove("selected");
+            }
+        });
+
+        // Réinitialiser le formulaire et les sièges sélectionnés
+        reservationForm.reset();
+    });
+});
+
+
+    </script>
+</body>
+</html> 

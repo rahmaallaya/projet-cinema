@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire de Salle de Cinéma</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assure-toi que ce chemin est correct -->
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Booking</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="carousel-container">
+        <h1>Movies</h1>
+        <div class="carousel">
+            <button class="nav prev">&lt;</button>
+            <div class="carousel-inner">
+                <div class="movie" data-id="1" data-details="Le film The Greatest Showman raconte l'histoire de P.T. Barnum.">
+                    <img src="image1.jpg" alt="The Greatest Showman">
+                    <h3>The Greatest Showman</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                         <button onclick="window.location.href='reservation.html?filmId=1'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="2" data-details="White House Down est un film d'action.">
+                    <img src="image2.jpeg" alt="White House Down">
+                    <h3>White House Down</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=2'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="3" data-details="The Wolf of Wall Street est un film biographique.">
+                    <img src="image3.jpeg" alt="The Wolf of Wall Street">
+                    <h3>The Wolf of Wall Street</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=3'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="4" data-details="Les Dents de la Mer est un film d'horreur classique.">
+                    <img src="image4.jpeg" alt="Jaws">
+                    <h3>Les Dents de la Mer</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=4'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="5" data-details="Inception est un film de science-fiction.">
+                    <img src="image5.jpeg" alt="Inception">
+                    <h3>Inception</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=5'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="6" data-details="Nerve est un thriller interactif sur un jeu en ligne.">
+                    <img src="image6.jpeg" alt="Nerve">
+                    <h3>Nerve</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=6'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="7" data-details="Titanic raconte l'histoire d'amour entre Jack et Rose.">
+                    <img src="image7.jpeg" alt="Titanic">
+                    <h3>Titanic</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=7'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="8" data-details="Fall est un thriller sur deux alpinistes piégés au sommet d'une tour.">
+                    <img src="image8.jpeg" alt="Fall">
+                    <h3>Fall</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=8'">Réserver</button>
+                    </div>
+                </div>
+                <div class="movie" data-id="9" data-details="Happy New Year est un film indien sur un groupe de voleurs qui organisent un vol pendant une compétition de danse.">
+                    <img src="image9.jpeg" alt="Happy New Year">
+                    <h3>Happy New Year</h3>
+                    <div class="button-container">
+                        <button class="details-btn">Détails</button>
+                        <button onclick="window.location.href='reservation.html?filmId=9'">Réserver</button>
+                    </div>
+                </div>
+            </div>
+            <button class="nav next">&gt;</button>
+        </div>
+        <div class="movie-details" id="movie-details">
+            <h2>Détails du film</h2>
+            <p id="details-text">Sélectionnez un film pour voir les détails.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    
+</body>
+</html>
